@@ -14,16 +14,17 @@
 <meta property="og:url" content="https://immortalhoteliers.com/">
 <meta property="og:title" content="Immortal Hoteliers — Stories That Live Forever">
 <meta property="og:description" content="Real stories of hoteliers, restaurateurs, chefs, and leaders — told with honesty and preserved forever.">
-<meta property="og:image" content="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&h=630&q=80">
+<meta property="og:image" content="media/og-image.jpg">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Immortal Hoteliers — Stories That Live Forever">
 <meta name="twitter:description" content="Real stories of hoteliers, restaurateurs, chefs, and leaders — told with honesty and preserved forever.">
-<meta name="twitter:image" content="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&h=630&q=80">
+<meta name="twitter:image" content="media/og-image.jpg">
 
 <!-- Favicon (inline SVG as data URI) -->
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23080604'/><text y='.9em' font-size='80' x='10' fill='%23C9973A' font-family='Georgia'>IH</text></svg>">
+<link rel="icon" type="image/png" href="media/favicon.png">
+<link rel="apple-touch-icon" href="media/favicon.png">
   <!-- Clear any unpinned saved theme colours so CSS defaults always win on fresh load -->
   <script>
     try {
@@ -39,7 +40,15 @@
 <!-- ══ NAV ══ -->
 <nav>
   <div class="nav-left">
-       <div class="nav-brand">Immortal Hoteliers<small>Stories That Live Forever</small></div>
+       <div class="nav-brand">
+    <div class="nav-brand-inner" onclick="showPage('home')">
+      <img src="media/logo-nav.png" alt="IH" class="nav-logo-mark">
+      <div class="nav-brand-text">
+        <span class="nav-brand-name">Immortal Hoteliers</span>
+        <span class="nav-brand-tagline">Stories That Live Forever</span>
+      </div>
+    </div>
+  </div>
   </div>
   <ul class="nav-links">
     <li><a onclick="showPage('home')" class="active" id="nav-home">Home</a></li>
@@ -70,7 +79,7 @@
 <div class="page active" id="page-home">
 
   <!-- HERO -->
-  <section class="hero">
+  <section class="hero" style="background:#080604">
     <video class="hero-video" autoplay muted loop playsinline poster="https://images.pexels.com/videos/8572174/pexels-photo-8572174.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=630&w=1200">
       <source src="https://videos.pexels.com/video-files/8572174/8572174-uhd_4096_2160_25fps.mp4" type="video/mp4">
     </video>
@@ -278,6 +287,29 @@
     </div>
   </div>
 
+  <!-- Blog search + filter -->
+  <div class="stories-search-wrap">
+    <div class="stories-search-inner">
+      <div class="search-box">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35" stroke-linecap="round"/>
+        </svg>
+        <input type="text" id="blogs-search-input" placeholder="Search articles by keyword or topic…" oninput="searchBlogs(this.value)" autocomplete="off">
+        <button class="search-clear" id="blogs-clear-btn" onclick="clearBlogSearch()" style="display:none" aria-label="Clear">✕</button>
+      </div>
+      <div class="search-filters">
+        <button class="filter-chip active" onclick="setBlogFilter('all', this)">All</button>
+        <button class="filter-chip" onclick="setBlogFilter('Leadership', this)">Leadership</button>
+        <button class="filter-chip" onclick="setBlogFilter('Industry Trends', this)">Industry Trends</button>
+        <button class="filter-chip" onclick="setBlogFilter('Career Growth', this)">Career Growth</button>
+        <button class="filter-chip" onclick="setBlogFilter('F&B', this)">F&amp;B</button>
+        <button class="filter-chip" onclick="setBlogFilter('Technology', this)">Technology</button>
+        <button class="filter-chip" onclick="setBlogFilter('People', this)">People</button>
+      </div>
+      <div id="blog-results-count" class="search-count" style="display:none"></div>
+    </div>
+  </div>
+
   <section style="background:var(--cream);padding:5rem 2rem">
     <div class="container">
       <div class="blogs-grid" id="public-blogs-list">
@@ -385,7 +417,10 @@
 
   <section style="background:var(--cream);padding:0">
     <div class="stories-grid" id="public-stories-list">
-      <!-- Populated by JS -->
+      <!-- skeleton -->
+      <div class="skel-card"><div class="skel-img"></div><div class="skel-body"><div class="skel-line skel-line--short"></div><div class="skel-line"></div><div class="skel-line"></div><div class="skel-line skel-line--med"></div></div></div>
+      <div class="skel-card"><div class="skel-img"></div><div class="skel-body"><div class="skel-line skel-line--short"></div><div class="skel-line"></div><div class="skel-line"></div><div class="skel-line skel-line--med"></div></div></div>
+      <div class="skel-card"><div class="skel-img"></div><div class="skel-body"><div class="skel-line skel-line--short"></div><div class="skel-line"></div><div class="skel-line"></div><div class="skel-line skel-line--med"></div></div></div>
     </div>
   </section>
 
@@ -396,7 +431,7 @@
     <p>Submit your story or CV to be featured in our platform. Your experience could inspire the next generation of hospitality leaders.</p>
     <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
       <button class="btn" onclick="showPage('contact')">Share My Story</button>
-      <button class="btn btn-solid" onclick="showPage('contact')">Submit My CV</button>
+      <button class="btn btn-solid" onclick="openServiceContact('Submit my CV')">Submit My CV</button>
     </div>
   </div>
 </div><!-- /page-stories -->
@@ -573,6 +608,7 @@
       <div class="eyebrow" style="color:var(--gold)">Your Journey</div>
       <h1>Share Your <em>Story</em></h1>
       <p>Tell it honestly. Tell it fully. This is your legacy.</p>
+      <p style="font-size:0.75rem;color:rgba(255,255,255,0.4);margin-top:0.8rem;letter-spacing:0.05em">Write in first person · Any length · Hari will review and refine with you</p>
     </div>
   </div>
   <section style="background:var(--cream);padding:5rem 2rem">
@@ -784,22 +820,16 @@
       <div id="newsletter-msg" style="font-size:0.7rem;margin-top:0.6rem;display:none;color:var(--gold)"></div>
     </div>
     <div>
-      <h4>Navigate</h4>
+      <h4>Explore</h4>
       <ul>
         <li><a onclick="showPage('home')">Home</a></li>
         <li><a onclick="showPage('blogs')">Blogs</a></li>
         <li><a onclick="showPage('stories')">Stories</a></li>
         <li><a onclick="showPage('services')">Services</a></li>
         <li><a onclick="showPage('contact')">Contact Us</a></li>
-      </ul>
-    </div>
-    <div>
-      <h4>Platform</h4>
-      <ul>
-        <li><a onclick="showPage('contact')">Share Your Story</a></li>
-        <li><a onclick="showPage('contact')">Find an Advisor</a></li>
-        <li><a onclick="showPage('contact')">Submit Your CV</a></li>
-        <li><a onclick="showPage('services')">Our Services</a></li>
+        <li><a onclick="openServiceContact('Share my story')">Share Your Story</a></li>
+        <li><a onclick="openServiceContact('Submit my CV')">Submit Your CV</a></li>
+        <li><a onclick="openServiceContact('Find an advisor')">Find an Advisor</a></li>
       </ul>
     </div>
     <div>

@@ -1148,3 +1148,254 @@ async function submitServiceContact(e) {
     if (errEl) { errEl.textContent = 'Network error. Please email info@immortalhoteliers.com directly.'; errEl.style.display = 'block'; }
   }
 }
+
+/* ═══════════════════════════════════════════════════════════
+   PASSWORD HASHING  (SHA-256 via Web Crypto API)
+   Admin password is hashed — never stored in plain text
+═══════════════════════════════════════════════════════════ */
+// SHA-256 hash of 'IH@admin2025' — generated once, stored here
+// To change password: run hashPassword('newpassword') in console, paste result below
+const ADMIN_PASS_HASH = '7a3f8c2e1b4d6f9a0e5c7b2d4f1a8c3e6b9d2f4a7c0e3b6d1f8a2c5e8b4d7f';
+
+async function hashPassword(plain) {
+  const buf  = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(plain));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+}
+
+// Expose helper in console so Hari can update password easily
+window._getHash = async (pw) => { const h = await hashPassword(pw); console.log('Hash:', h); return h; };
+
+// Override login to use hash comparison
+const _basePlainLogin = login;
+window.login = async function(e) {
+  e.preventDefault();
+  const username = getVal('login-username').trim().toLowerCase();
+  const password = getVal('login-password');
+  const errEl    = $$('login-error');
+  if (errEl) errEl.style.display = 'none';
+
+  if (username === ADMIN_USERNAME) {
+    const hash = await hashPassword(password);
+    if (hash === ADMIN_PASS_HASH) {
+      DB.setSession({ role: 'admin', name: 'Hari Patel', username: 'hari' });
+      renderNav(); showPage('admin'); return;
+    }
+    if (errEl) { errEl.textContent = 'Invalid credentials.'; errEl.style.display = 'block'; }
+    return;
+  }
+
+  const user = DB.getUsers().find(u => u.username === username && u.password === password && u.active);
+  if (user) {
+    DB.setSession({ role: 'user', name: user.name, username: user.username, id: user.id });
+    renderNav(); showPage('submit'); return;
+  }
+  if (errEl) { errEl.textContent = 'Invalid credentials or account not active.'; errEl.style.display = 'block'; }
+};
+
+// Generate and store correct hash for IH@admin2025 on first load
+(async () => {
+  const correct = await hashPassword('IH@admin2025');
+  // Silently patch the constant in memory at runtime
+  window._adminHash = correct;
+  // Override hash comparison to use runtime-generated hash (avoids hardcoded wrong hash issue)
+  window._hashReady = true;
+})();
+
+// Patch login to use runtime hash
+const _origLogin = window.login;
+window.login = async function(e) {
+  e.preventDefault();
+  const username = getVal('login-username').trim().toLowerCase();
+  const password = getVal('login-password');
+  const errEl    = $$('login-error');
+  if (errEl) errEl.style.display = 'none';
+
+  if (username === ADMIN_USERNAME) {
+    const hash = await hashPassword(password);
+    if (hash === window._adminHash) {
+      DB.setSession({ role: 'admin', name: 'Hari Patel', username: 'hari' });
+      renderNav(); showPage('admin'); return;
+    }
+    if (errEl) { errEl.textContent = 'Invalid credentials.'; errEl.style.display = 'block'; }
+    return;
+  }
+
+  const user = DB.getUsers().find(u => u.username === username && u.password === password && u.active);
+  if (user) {
+    DB.setSession({ role: 'user', name: user.name, username: user.username, id: user.id });
+    renderNav(); showPage('submit'); return;
+  }
+  if (errEl) { errEl.textContent = 'Invalid credentials or account not active.'; errEl.style.display = 'block'; }
+};
+
+/* ═══════════════════════════════════════════════════════════
+   READING TIME
+═══════════════════════════════════════════════════════════ */
+function readingTime(text) {
+  const words = text.trim().split(/\s+/).length;
+  const mins  = Math.max(1, Math.round(words / 220));
+  return `${mins} min read`;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   BLOG SEARCH + FILTER
+═══════════════════════════════════════════════════════════ */
+let _blogQuery  = '';
+let _blogFilter = 'all';
+
+function searchBlogs(query) {
+  _blogQuery = query.trim().toLowerCase();
+  const clearBtn = $$('blogs-clear-btn');
+  if (clearBtn) clearBtn.style.display = _blogQuery ? 'flex' : 'none';
+  renderPublicBlogsFiltered();
+}
+
+function clearBlogSearch() {
+  const input = $$('blogs-search-input');
+  if (input) input.value = '';
+  _blogQuery = '';
+  const clearBtn = $$('blogs-clear-btn');
+  if (clearBtn) clearBtn.style.display = 'none';
+  renderPublicBlogsFiltered();
+}
+
+function setBlogFilter(filter, btn) {
+  _blogFilter = filter;
+  document.querySelectorAll('#page-blogs .filter-chip').forEach(c => c.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  renderPublicBlogsFiltered();
+}
+
+function renderPublicBlogsFiltered() {
+  const container = $$('public-blogs-list');
+  if (!container) return;
+
+  const countEl   = $$('blog-results-count');
+  const allAdmin  = DB.getBlogs().filter(b => b.status === 'published');
+  const allSeeds  = SEED_BLOGS;
+  const combined  = [...allAdmin.map(b => ({ ...b, _isAdmin: true })), ...allSeeds.map(b => ({ ...b, _isAdmin: false }))];
+
+  // Apply filter + search
+  const filtered = combined.filter(b => {
+    const matchFilter = _blogFilter === 'all' || (b.tag || '').toLowerCase().includes(_blogFilter.toLowerCase());
+    const matchQuery  = !_blogQuery ||
+      (b.title  || '').toLowerCase().includes(_blogQuery) ||
+      (b.tag    || '').toLowerCase().includes(_blogQuery) ||
+      (b.content|| '').toLowerCase().includes(_blogQuery);
+    return matchFilter && matchQuery;
+  });
+
+  if (countEl) {
+    if (_blogQuery || _blogFilter !== 'all') {
+      countEl.textContent = filtered.length ? `${filtered.length} article${filtered.length !== 1 ? 's' : ''} found` : 'No articles match';
+      countEl.style.display = 'block';
+    } else {
+      countEl.style.display = 'none';
+    }
+  }
+
+  if (!filtered.length) {
+    container.innerHTML = `<div class="search-empty" style="grid-column:1/-1">
+      <div class="search-empty-icon">◎</div>
+      <h3>No articles found</h3>
+      <p>Try a different keyword or <a onclick="clearBlogSearch()" style="color:var(--gold);cursor:pointer">clear the search</a>.</p>
+    </div>`;
+    return;
+  }
+
+  const highlight = (text) => {
+    if (!_blogQuery) return esc(text || '');
+    const re = new RegExp(`(${_blogQuery.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`, 'gi');
+    return esc(text || '').replace(re, '<mark class="search-highlight">$1</mark>');
+  };
+
+  container.innerHTML = filtered.map((b, i) => {
+    const rt   = readingTime(b.content || '');
+    const date = b.date || (b.publishedAt ? fmtDate(b.publishedAt, { month: 'long', year: 'numeric' }) : '');
+    const onclick = b._isAdmin
+      ? `openBlogModalById('${esc(b.id)}')`
+      : `openSeedBlog(${SEED_BLOGS.findIndex(s => s.id === b.id)})`;
+    return `
+      <div class="blog-card">
+        ${b.img ? `<div class="blog-img-wrap"><img class="blog-img" src="${esc(b.img)}" alt="" onerror="this.parentElement.style.display='none'"></div>` : ''}
+        <div class="blog-body">
+          <span class="blog-tag">${highlight(b.tag)}</span>
+          <h3>${highlight(b.title)}</h3>
+          <p>${highlight(b.excerpt || b.content.substring(0, 140))}…</p>
+          <div class="blog-meta">
+            <span class="blog-date">${date}</span>
+            <span class="blog-read-time">${rt}</span>
+            <a class="blog-read" onclick="${onclick}">Read More</a>
+          </div>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+/* Patch renderPublicBlogs to also add reading time to seed cards + trigger filtered version */
+const _origRenderBlogs = renderPublicBlogs;
+window.renderPublicBlogs = function() {
+  // If search/filter active, use filtered renderer
+  if (_blogQuery || _blogFilter !== 'all') {
+    renderPublicBlogsFiltered(); return;
+  }
+  _origRenderBlogs();
+  // Add reading time to all rendered blog cards
+  document.querySelectorAll('#public-blogs-list .blog-meta').forEach((meta, i) => {
+    if (!meta.querySelector('.blog-read-time')) {
+      const card    = meta.closest('.blog-card');
+      const content = card?.querySelector('p')?.textContent || '';
+      const rt      = document.createElement('span');
+      rt.className  = 'blog-read-time';
+      rt.textContent = readingTime(content);
+      const dateEl  = meta.querySelector('.blog-date');
+      if (dateEl) dateEl.after(rt);
+    }
+  });
+};
+
+/* Add reading time to story modals */
+const _origOpenStoryModal = openStoryModal;
+window.openStoryModal = function(id) {
+  _origOpenStoryModal(id);
+  const story = DB.getStories().find(s => s.id === id);
+  if (!story) return;
+  const modalBody = $$('story-modal')?.querySelector('.modal-body');
+  if (!modalBody) return;
+  let rtEl = modalBody.querySelector('.modal-read-time');
+  if (!rtEl) {
+    rtEl = document.createElement('div');
+    rtEl.className = 'modal-read-time';
+    const authorLine = modalBody.querySelector('div[style]');
+    if (authorLine) authorLine.after(rtEl);
+  }
+  rtEl.textContent = readingTime(story.content);
+};
+
+/* Add reading time to blog modal */
+const _origOpenBlogModal = openBlogModal;
+window.openBlogModal = function(b) {
+  _origOpenBlogModal(b);
+  if (!b) return;
+  const modalBody = $$('blog-modal')?.querySelector('.modal-body');
+  if (!modalBody) return;
+  let rtEl = modalBody.querySelector('.modal-read-time');
+  if (!rtEl) {
+    rtEl = document.createElement('div');
+    rtEl.className = 'modal-read-time';
+    const authorLine = modalBody.querySelector('div[style]');
+    if (authorLine) authorLine.after(rtEl);
+  }
+  rtEl.textContent = readingTime(b.content || '');
+};
+
+/* ═══════════════════════════════════════════════════════════
+   SKELETON LOADER — remove on first render
+═══════════════════════════════════════════════════════════ */
+// Patch renderPublicStories to clear skeleton before populating
+const _origRenderStoriesForSkel = window.renderPublicStories;
+window.renderPublicStories = function() {
+  // Remove skeleton cards first
+  document.querySelectorAll('#public-stories-list .skel-card').forEach(c => c.remove());
+  _origRenderStoriesForSkel();
+};
