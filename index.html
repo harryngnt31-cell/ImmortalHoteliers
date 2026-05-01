@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Immortal Hoteliers — Stories That Live Forever</title>
+<meta name="description" content="A platform dedicated to the people behind hospitality — preserving their journeys, protecting their wisdom, and connecting experience with ambition.">
+<meta name="keywords" content="hospitality, hoteliers, hotel stories, restaurant industry, hospitality careers, Doha, Qatar">
+<meta name="author" content="Hari Patel">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph / Social -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://immortalhoteliers.com/">
+<meta property="og:title" content="Immortal Hoteliers — Stories That Live Forever">
+<meta property="og:description" content="Real stories of hoteliers, restaurateurs, chefs, and leaders — told with honesty and preserved forever.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&h=630&q=80">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Immortal Hoteliers — Stories That Live Forever">
+<meta name="twitter:description" content="Real stories of hoteliers, restaurateurs, chefs, and leaders — told with honesty and preserved forever.">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&h=630&q=80">
+
+<!-- Favicon (inline SVG as data URI) -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23080604'/><text y='.9em' font-size='80' x='10' fill='%23C9973A' font-family='Georgia'>IH</text></svg>">
+  <!-- Clear any unpinned saved theme colours so CSS defaults always win on fresh load -->
+  <script>
+    try {
+      var t = JSON.parse(localStorage.getItem('ih_theme'));
+      if (t && !t.pinned) { delete t.vars; localStorage.setItem('ih_theme', JSON.stringify(t)); }
+    } catch(e) {}
+  </script>
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav>
+  <div class="nav-left">
+       <div class="nav-brand">Immortal Hoteliers<small>Stories That Live Forever</small></div>
+  </div>
+  <ul class="nav-links">
+    <li><a onclick="showPage('home')" class="active" id="nav-home">Home</a></li>
+    <li><a onclick="showPage('blogs')" id="nav-blogs">Blogs</a></li>
+    <li><a onclick="showPage('stories')" id="nav-stories">Stories</a></li>
+    <li><a onclick="showPage('services')" id="nav-services">Services</a></li>
+    <li><a onclick="showPage('contact')" id="nav-contact">Contact Us</a></li>
+  </ul>
+  <div id="nav-auth-area"></div>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a onclick="showPage('home');toggleMenu()">Home</a>
+  <a onclick="showPage('blogs');toggleMenu()">Blogs</a>
+  <a onclick="showPage('stories');toggleMenu()">Stories</a>
+  <a onclick="showPage('services');toggleMenu()">Services</a>
+  <a onclick="showPage('contact');toggleMenu()">Contact Us</a>
+  <div class="mobile-auth-divider"></div>
+  <div id="mobile-auth-area"></div>
+</div>
+
+<!-- ══════════════════════════════════
+     HOME PAGE
+══════════════════════════════════ -->
+<div class="page active" id="page-home">
+
+  <!-- HERO -->
+  <section class="hero">
+    <video class="hero-video" autoplay muted loop playsinline poster="https://images.pexels.com/videos/8572174/pexels-photo-8572174.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=630&w=1200">
+      <source src="https://videos.pexels.com/video-files/8572174/8572174-uhd_4096_2160_25fps.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-gold-bar"></div>
+    <div class="hero-content">
+           <h1>IMMORTAL<span>HOTELIERS</span></h1>
+      <div class="hero-divider">
+        <span class="hero-tagline">Stories That Live Forever</span>
+      </div>
+      <p class="hero-sub">A platform dedicated to the people behind hospitality — preserving their journeys, protecting their wisdom, and connecting experience with ambition.</p>
+      <a class="btn" onclick="showPage('stories')">Discover Stories</a>
+    </div>
+    <div class="scroll-cue">
+      <span>Explore</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- WHO WE ARE -->
+  <section class="who" id="about">
+    <div class="container">
+      <div class="who-grid">
+        <div class="who-text">
+          <div class="eyebrow">Who We Are</div>
+          <h2 class="section-title">A hospitality <em>legacy &amp; advisory</em> platform</h2>
+          <p>Immortal Hoteliers focuses on the people behind hotels and restaurants — sharing real stories of hoteliers, restaurateurs, leaders, and consultants. Their journey, their challenges, their lessons, and their purpose.</p>
+          <p>We also connect experienced hospitality consultants with hotel and restaurant owners who need support for new projects and operational improvement.</p>
+          <blockquote class="big-quote">This is not about properties or promotion. It is about people.</blockquote>
+          <a class="btn btn-solid" onclick="showPage('contact')" style="margin-top:1rem;display:inline-block">Get In Touch</a>
+        </div>
+        <div class="who-imgs">
+          <img class="who-img-a" src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&w=700&q=80" alt="Hospitality professional">
+          <img class="who-img-b" src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=450&q=80" alt="Hotel lobby">
+          <div class="who-label">Dedicated to People</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-section">
+    <div class="marquee-label">The World of Hospitality</div>
+    <div class="marquee">
+      <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&h=400&q=70" alt="">
+      <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=600&h=400&q=70" alt="">
+      <img src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&w=600&h=400&q=70" alt="">
+      <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=600&h=400&q=70" alt="">
+      <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=600&h=400&q=70" alt="">
+      <img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=600&h=400&q=70" alt="">
+      <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&h=400&q=70" alt="">
+      <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=600&h=400&q=70" alt="">
+      <img src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&w=600&h=400&q=70" alt="">
+      <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=600&h=400&q=70" alt="">
+      <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=600&h=400&q=70" alt="">
+      <img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=600&h=400&q=70" alt="">
+    </div>
+  </div>
+
+  <!-- THE GAP -->
+  <section class="gap-section">
+    <div class="container">
+      <div class="eyebrow" style="color:var(--gold)">The Problem We Solve</div>
+      <h2 class="section-title section-title--light">The Industry Gap</h2>
+      <p class="gap-sub">Hospitality is built by people, but their stories are rarely preserved.</p>
+      <div class="gaps-grid">
+        <div class="gap-card"><div class="gap-num">01</div><h4>Lost Journeys</h4><p>Over time, job titles replace real journeys and the human story behind a career disappears.</p></div>
+        <div class="gap-card"><div class="gap-num">02</div><h4>Forgotten Struggles</h4><p>Achievements replace struggles. The sacrifices and hard lessons that define character are left behind.</p></div>
+        <div class="gap-card"><div class="gap-num">03</div><h4>Lost Lessons</h4><p>Lessons learned through failure are forgotten, preventing future generations from growing faster.</p></div>
+        <div class="gap-card"><div class="gap-num">04</div><h4>Untapped Experience</h4><p>Hotel and restaurant owners need trusted guidance but do not always know where to find experienced professionals.</p></div>
+      </div>
+      <div class="gap-footer">There is a gap between experience and new ventures. We bridge it.</div>
+    </div>
+  </section>
+
+  <!-- WHAT WE DO -->
+  <section class="what">
+    <div class="container">
+      <div class="eyebrow">What We Do</div>
+      <h2 class="section-title">Three pillars.<br>One mission.</h2>
+      <p class="what-intro">Our platform operates across storytelling, legacy preservation, and advisory connections — everything the hospitality industry needs to remember itself.</p>
+      <div class="pillars">
+        <div class="pillar">
+          <div class="pillar-icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 10h24M8 16h18M8 22h20M8 28h14"/><circle cx="32" cy="27" r="6" stroke-width="1.4"/><path d="M36 31l3 3" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          <span class="pillar-tag">01 · Core Purpose</span>
+          <h3>Storytelling</h3>
+          <p>We publish deep and honest stories about the people behind hospitality — raw, real, and unfiltered accounts of careers built on passion and perseverance.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="6" y="6" width="28" height="28" rx="0"/><line x1="6" y1="14" x2="34" y2="14"/><line x1="14" y1="6" x2="14" y2="34"/><circle cx="24" cy="24" r="4"/></svg></div>
+          <span class="pillar-tag">02 · Our Archive</span>
+          <h3>Legacy Archive</h3>
+          <p>We create a permanent record of experience that future generations of hoteliers, chefs, and leaders can learn from — wisdom preserved, not wasted.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="14" cy="15" r="5"/><circle cx="26" cy="15" r="5"/><path d="M4 32c0-5.52 4.48-10 10-10"/><path d="M26 22c5.52 0 10 4.48 10 10"/><line x1="20" y1="20" x2="20" y2="28"/><line x1="16" y1="24" x2="24" y2="24"/></svg></div>
+          <span class="pillar-tag">03 · Our Network</span>
+          <h3>Advisory Connections</h3>
+          <p>We connect experienced consultants and specialists with hospitality owners, investors, and startups who need real, trusted support to grow.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO WE SERVE -->
+  <section class="serve">
+    <div class="container">
+      <div class="eyebrow" style="color:var(--gold)">Who We Serve</div>
+      <h2 class="section-title section-title--light">Built for two sides<br>of the same industry</h2>
+      <div class="serve-grid">
+        <div class="serve-col">
+          <h3>Hospitality<br>Professionals</h3>
+          <div class="serve-divider"></div>
+          <ul class="serve-list">
+            <li>Hoteliers</li><li>Restaurateurs</li><li>Chefs</li>
+            <li>Leaders &amp; Operators</li><li>Consultants &amp; Advisors</li>
+          </ul>
+        </div>
+        <div class="serve-col">
+          <h3>Owners <span class="amp">&amp;</span><br>Startups</h3>
+          <div class="serve-divider"></div>
+          <ul class="serve-list">
+            <li>Investors</li><li>New hotel projects</li>
+            <li>New restaurant concepts</li><li>Growing hospitality brands</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOUNDER -->
+  <section class="founder">
+    <div class="founder-inner">
+      <div class="founder-avatar">
+        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=500&q=80" alt="Hari Patel, Founder">
+               <div class="founder-avatar-overlay"></div>
+        <div class="founder-avatar-name">
+          Hari Patel
+          <div class="founder-avatar-title">Founder, Immortal Hoteliers</div>
+        </div>
+      </div>
+      <div class="founder-text">
+        <div class="eyebrow">Founder's Note</div>
+        <h2 class="section-title" style="font-size:clamp(1.8rem,3vw,2.8rem)">Hospitality is about<br><em>people.</em></h2>
+        <p>Immortal Hoteliers was created because I believe hospitality is about people. During my journey in this industry, I saw how easily personal stories are forgotten. Titles and achievements remain, but the real struggles, sacrifices, and lessons often disappear.</p>
+        <p>I wanted to create a platform where these human journeys could be preserved with honesty and respect. Immortal Hoteliers also connects experienced hospitality professionals with owners and startups who need guidance.</p>
+        <p>This platform is not about promotion or visibility. It is about legacy, trust, and ensuring that real experience continues to shape the future of hospitality.</p>
+        <div class="founder-sig">— Hari Patel</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSION -->
+  <section class="mission">
+    <div class="container">
+      <div class="eyebrow" style="color:var(--gold)">Our Mission</div>
+      <h2 class="section-title section-title--light">Why we exist</h2>
+      <div class="mission-grid">
+        <div class="mission-card"><span class="mission-verb">To preserve</span><p>The real stories of hospitality professionals — told with honesty, depth, and the respect they deserve.</p></div>
+        <div class="mission-card"><span class="mission-verb">To protect</span><p>The wisdom earned through years of experience, failure, and growth — so it is never lost to time or ego.</p></div>
+        <div class="mission-card"><span class="mission-verb">To connect</span><p>Trusted hospitality experts with those building new hotels and restaurants who need real, proven guidance.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT HOME -->
+  <section class="contact-home">
+    <div class="container">
+      <div class="contact-home-inner">
+        <div>
+          <div class="eyebrow">Get In Touch</div>
+          <h2>Share your<br><em>story</em> with the world</h2>
+          <p style="font-size:0.85rem;color:var(--warm);line-height:1.9;font-weight:300;margin-top:1rem">Whether you are a hospitality professional with a story to tell, or an owner seeking expert guidance — we are here for you.</p>
+          <div class="contact-detail">
+            <a href="mailto:info@immortalhoteliers.com">info@immortalhoteliers.com</a><br>
+            <a href="tel:+97451142741">+974 51142741</a><br>
+            <a href="https://immortalhoteliers.com" target="_blank">www.immortalhoteliers.com</a>
+          </div>
+        </div>
+        <div class="form" id="home-contact-form">
+          <input type="text" id="hc-name" placeholder="Your full name" required>
+          <input type="email" id="hc-email" placeholder="Email address *" required>
+          <input type="text" id="hc-role" placeholder="Your role in hospitality">
+          <textarea id="hc-message" placeholder="Your message or inquiry" style="min-height:110px"></textarea>
+          <div id="hc-error" class="form-error" style="display:none"></div>
+          <div id="hc-success" class="form-success" style="display:none">✓ Message sent! Hari will be in touch soon.</div>
+          <button class="btn btn-solid" style="font-family:var(--sans);cursor:pointer" onclick="submitContactForm(event,'home')">Send Message</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /page-home -->
+
+
+<!-- ══════════════════════════════════
+     BLOGS PAGE
+══════════════════════════════════ -->
+<div class="page" id="page-blogs">
+  <div class="page-hero" style="padding-top:76px">
+    <div class="page-hero-inner">
+      <div class="eyebrow" style="color:var(--gold)">Our Blog</div>
+      <h1>Insights &amp; <em>Trends</em></h1>
+      <p>Stay updated with the latest news, analysis, and thought leadership from the world of hospitality.</p>
+    </div>
+  </div>
+
+  <section style="background:var(--cream);padding:5rem 2rem">
+    <div class="container">
+      <div class="blogs-grid" id="public-blogs-list">
+        <!-- seed cards shown until admin adds real posts -->
+        <div class="blog-card seed-blog">
+          <div class="blog-img-wrap"><img class="blog-img" src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&h=400&q=80" alt=""></div>
+          <div class="blog-body">
+            <span class="blog-tag">Industry Trends</span>
+            <h3>The Future of Luxury Hospitality in the Middle East</h3>
+            <p>Exploring how regional culture and global luxury standards are merging to create unprecedented guest experiences.</p>
+            <div class="blog-meta"><span class="blog-date">March 2025</span><a class="blog-read" onclick="openSeedBlog(0)">Read More</a></div>
+          </div>
+        </div>
+        <div class="blog-card seed-blog">
+          <div class="blog-img-wrap"><img class="blog-img" src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=600&h=400&q=80" alt=""></div>
+          <div class="blog-body">
+            <span class="blog-tag">Leadership</span>
+            <h3>What Makes a Great Hotel General Manager in 2025</h3>
+            <p>The skills, mindset, and human qualities that define exceptional hotel leadership today.</p>
+            <div class="blog-meta"><span class="blog-date">February 2025</span><a class="blog-read" onclick="openSeedBlog(1)">Read More</a></div>
+          </div>
+        </div>
+        <div class="blog-card seed-blog">
+          <div class="blog-img-wrap"><img class="blog-img" src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&w=600&h=400&q=80" alt=""></div>
+          <div class="blog-body">
+            <span class="blog-tag">Career Growth</span>
+            <h3>How to Transition from Operations to Consulting in Hospitality</h3>
+            <p>A practical guide for experienced hoteliers looking to leverage their expertise as independent advisors.</p>
+            <div class="blog-meta"><span class="blog-date">January 2025</span><a class="blog-read" onclick="openSeedBlog(2)">Read More</a></div>
+          </div>
+        </div>
+        <div class="blog-card seed-blog">
+          <div class="blog-img-wrap"><img class="blog-img" src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=600&h=400&q=80" alt=""></div>
+          <div class="blog-body">
+            <span class="blog-tag">Technology</span>
+            <h3>AI and the Hospitality Industry: Friend or Foe?</h3>
+            <p>How artificial intelligence is reshaping guest experiences and what it means for hospitality professionals.</p>
+            <div class="blog-meta"><span class="blog-date">December 2024</span><a class="blog-read" onclick="openSeedBlog(3)">Read More</a></div>
+          </div>
+        </div>
+        <div class="blog-card seed-blog">
+          <div class="blog-img-wrap"><img class="blog-img" src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=600&h=400&q=80" alt=""></div>
+          <div class="blog-body">
+            <span class="blog-tag">F&amp;B</span>
+            <h3>The Art of Restaurant Concept Development</h3>
+            <p>From vision to opening night — the critical steps that separate thriving restaurants from those that close within a year.</p>
+            <div class="blog-meta"><span class="blog-date">November 2024</span><a class="blog-read" onclick="openSeedBlog(4)">Read More</a></div>
+          </div>
+        </div>
+        <div class="blog-card seed-blog">
+          <div class="blog-img-wrap"><img class="blog-img" src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=600&h=400&q=80" alt=""></div>
+          <div class="blog-body">
+            <span class="blog-tag">People</span>
+            <h3>Why Hospitality Professionals Burn Out — and How to Prevent It</h3>
+            <p>An honest conversation about wellbeing, sustainability, and the human cost of a high-service industry.</p>
+            <div class="blog-meta"><span class="blog-date">October 2024</span><a class="blog-read" onclick="openSeedBlog(5)">Read More</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div><!-- /page-blogs -->
+
+
+<!-- ══════════════════════════════════
+     STORIES PAGE
+══════════════════════════════════ -->
+<div class="page" id="page-stories">
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="eyebrow" style="color:var(--gold)">Human Journeys</div>
+      <h1>Real <em>Stories</em></h1>
+      <p>The unfiltered journeys of hoteliers, restaurateurs, chefs, and leaders — told with honesty and preserved forever.</p>
+    </div>
+  </div>
+
+  <div class="stories-intro">
+    <div class="stories-intro-inner">
+      <div class="eyebrow" style="justify-content:center">Our Approach</div>
+      <h2 class="section-title" style="text-align:center">Every career has a <em>story</em> worth telling</h2>
+      <p>We sit with hospitality professionals and listen — really listen — to their journey. Not the polished version for LinkedIn, but the real one. The early mornings, the broken teams, the moments of doubt, and the quiet triumphs that no award ceremony ever captures.</p>
+    </div>
+  </div>
+
+  <!-- SEARCH BAR -->
+  <div class="stories-search-wrap">
+    <div class="stories-search-inner">
+      <div class="search-box">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35" stroke-linecap="round"/>
+        </svg>
+        <input type="text" id="stories-search-input" placeholder="Search by name, role, or keyword…" oninput="searchStories(this.value)" autocomplete="off">
+        <button class="search-clear" id="search-clear-btn" onclick="clearSearch()" style="display:none" aria-label="Clear search">✕</button>
+      </div>
+      <div class="search-filters">
+        <button class="filter-chip active" onclick="setStoryFilter('all', this)">All Stories</button>
+        <button class="filter-chip" onclick="setStoryFilter('GM', this)">General Managers</button>
+        <button class="filter-chip" onclick="setStoryFilter('Chef', this)">Chefs</button>
+        <button class="filter-chip" onclick="setStoryFilter('F&B', this)">F&amp;B</button>
+        <button class="filter-chip" onclick="setStoryFilter('Consultant', this)">Consultants</button>
+      </div>
+      <div id="search-results-count" class="search-count" style="display:none"></div>
+    </div>
+  </div>
+
+  <section style="background:var(--cream);padding:0">
+    <div class="stories-grid" id="public-stories-list">
+      <!-- Populated by JS -->
+    </div>
+  </section>
+
+  <!-- CV Submit -->
+  <div class="cv-section">
+    <div class="eyebrow" style="color:var(--gold);justify-content:center">Join the Community</div>
+    <h2 class="section-title section-title--light">Share your <em>journey</em></h2>
+    <p>Submit your story or CV to be featured in our platform. Your experience could inspire the next generation of hospitality leaders.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+      <button class="btn" onclick="showPage('contact')">Share My Story</button>
+      <button class="btn btn-solid" onclick="showPage('contact')">Submit My CV</button>
+    </div>
+  </div>
+</div><!-- /page-stories -->
+
+
+<!-- ══════════════════════════════════
+     SERVICES PAGE
+══════════════════════════════════ -->
+<div class="page" id="page-services">
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="eyebrow" style="color:var(--gold)">What We Offer</div>
+      <h1>Our <em>Services</em></h1>
+      <p>From storytelling and advisory connections to CV publishing and consulting support — here is how we serve the hospitality community.</p>
+    </div>
+  </div>
+
+  <section style="background:var(--cream);padding:6rem 2rem">
+    <div class="container">
+      <div class="eyebrow">Core Services</div>
+      <h2 class="section-title">How we can<br><em>help you</em></h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-num">01</div>
+          <h3>Story Publishing</h3>
+          <p>We interview hospitality professionals and publish their full career story on our platform — preserving their legacy and amplifying their voice to a global audience.</p>
+          <a class="service-cta-link" onclick="openServiceContact('Share my story')" href="#">
+            Share My Story <span class="service-cta-arrow">→</span>
+          </a>
+        </div>
+        <div class="service-card">
+          <div class="service-num">02</div>
+          <h3>CV Publishing</h3>
+          <p>We feature your CV in our articles, increasing your visibility to recruiters, hotel owners, and investors actively searching for experienced hospitality talent.</p>
+          <a class="service-cta-link" onclick="openServiceContact('Submit my CV')" href="#">
+            Publish My CV <span class="service-cta-arrow">→</span>
+          </a>
+        </div>
+        <div class="service-card">
+          <div class="service-num">03</div>
+          <h3>Advisory Matching</h3>
+          <p>We connect hospitality owners and investors with trusted consultants, advisors, and specialists who have real operational experience in hotels and restaurants.</p>
+          <a class="service-cta-link" onclick="openServiceContact('Find an advisor')" href="#">
+            Find an Advisor <span class="service-cta-arrow">→</span>
+          </a>
+        </div>
+        <div class="service-card">
+          <div class="service-num">04</div>
+          <h3>Pre-Opening Support</h3>
+          <p>For new hotel and restaurant projects, we identify and connect you with the right experts to guide concept development, team building, and operational setup.</p>
+          <a class="service-cta-link" onclick="openServiceContact('Pre-opening support')" href="#">
+            Start a Conversation <span class="service-cta-arrow">→</span>
+          </a>
+        </div>
+        <div class="service-card">
+          <div class="service-num">05</div>
+          <h3>Operational Consulting</h3>
+          <p>We match established properties with experienced operators and consultants to improve service standards, efficiency, revenue performance, and guest satisfaction.</p>
+          <a class="service-cta-link" onclick="openServiceContact('Operational consulting')" href="#">
+            Get Expert Help <span class="service-cta-arrow">→</span>
+          </a>
+        </div>
+        <div class="service-card">
+          <div class="service-num">06</div>
+          <h3>Industry Education</h3>
+          <p>Our blog and story archive serve as a living educational resource — helping aspiring hoteliers learn from the real experiences of those who came before them.</p>
+          <a class="service-cta-link" onclick="openServiceContact('General inquiry')" href="#">
+            Explore the Archive <span class="service-cta-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="services-cta">
+    <div class="eyebrow" style="color:var(--gold);justify-content:center">Work With Us</div>
+    <h2 class="section-title section-title--light">Ready to get <em>started?</em></h2>
+    <p>Whether you are a professional with a story to tell, a property needing guidance, or an investor building something new — reach out and let's talk.</p>
+    <button class="btn btn-solid" onclick="showPage('contact')">Contact Us Today</button>
+  </div>
+</div><!-- /page-services -->
+
+
+<!-- ══════════════════════════════════
+     CONTACT PAGE
+══════════════════════════════════ -->
+<div class="page" id="page-contact">
+  <div class="page-hero" style="min-height:280px">
+    <div class="page-hero-inner">
+      <div class="eyebrow" style="color:var(--gold)">Get In Touch</div>
+      <h1>Let's <em>Talk</em></h1>
+    </div>
+  </div>
+
+  <div class="contact-page">
+    <div class="contact-page-inner">
+      <div class="contact-info">
+        <h2>We would love to<br>hear your <em>story</em></h2>
+        <p>Whether you are a hospitality professional with a journey to share, an owner seeking expert guidance, or a recruiter looking for top talent — we are here for you.</p>
+
+        <div class="contact-detail-item">
+          <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8l9 6 9-6M5 6h14a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2z"/></svg></div>
+          <div><h4>Email</h4><p><a href="mailto:info@immortalhoteliers.com">info@immortalhoteliers.com</a></p></div>
+        </div>
+        <div class="contact-detail-item">
+          <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg></div>
+          <div><h4>Phone</h4><p><a href="tel:+97451142741">+974 51142741</a></p></div>
+        </div>
+        <div class="contact-detail-item">
+          <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
+          <div><h4>Website</h4><p><a href="https://immortalhoteliers.com" target="_blank">www.immortalhoteliers.com</a></p></div>
+        </div>
+        <div class="contact-detail-item">
+          <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg></div>
+          <div><h4>Based In</h4><p>Doha, Qatar · Serving Globally</p></div>
+        </div>
+      </div>
+
+      <div class="contact-form-wrap">
+        <h3 class="contact-form-title">Send us a message</h3>
+        <div class="form-full">
+          <div class="form-row">
+            <input type="text" id="cp-fname" placeholder="First name" required>
+            <input type="text" id="cp-lname" placeholder="Last name" required>
+          </div>
+          <input type="email" id="cp-email" placeholder="Email address *" required>
+          <input type="tel" id="cp-phone" placeholder="Phone number">
+          <input type="text" id="cp-role" placeholder="Your role in hospitality">
+          <select id="cp-reason">
+            <option value="" disabled selected>Reason for contact</option>
+            <option>Share my story</option>
+            <option>Submit my CV</option>
+            <option>Find an advisor</option>
+            <option>Pre-opening support</option>
+            <option>Partnership inquiry</option>
+            <option>General inquiry</option>
+          </select>
+          <textarea id="cp-message" placeholder="Your message *" style="min-height:130px"></textarea>
+          <div id="cp-error" class="form-error" style="display:none"></div>
+          <div id="cp-success" class="form-success" style="display:none">✓ Message sent! Hari will be in touch soon.</div>
+          <button class="btn btn-solid" style="font-family:var(--sans);cursor:pointer;align-self:flex-start" onclick="submitContactForm(event,'contact')">Send Message</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- /page-contact -->
+
+
+<!-- ══════════════════════════════════
+     LOGIN PAGE
+══════════════════════════════════ -->
+<div class="page" id="page-login">
+  <div class="auth-wrap">
+    <div class="auth-card">
+      <div class="auth-brand">Immortal Hoteliers</div>
+      <div class="auth-sub">Sign in to your account</div>
+      <form onsubmit="login(event)" class="form-full" style="margin-top:2rem">
+        <input type="text" id="login-username" placeholder="Username" required autocomplete="username">
+        <input type="password" id="login-password" placeholder="Password" required autocomplete="current-password">
+        <div id="login-error" class="form-error" style="display:none"></div>
+        <button type="submit" class="btn btn-solid" style="font-family:var(--sans);margin-top:0.5rem">Sign In</button>
+      </form>
+      <p class="auth-note">Don't have access? <a onclick="showPage('contact')" style="color:var(--gold);cursor:pointer">Contact Hari</a> to be invited.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     SUBMIT STORY PAGE
+══════════════════════════════════ -->
+<div class="page" id="page-submit">
+  <div class="page-hero" style="min-height:260px">
+    <div class="page-hero-inner">
+      <div class="eyebrow" style="color:var(--gold)">Your Journey</div>
+      <h1>Share Your <em>Story</em></h1>
+      <p>Tell it honestly. Tell it fully. This is your legacy.</p>
+    </div>
+  </div>
+  <section style="background:var(--cream);padding:5rem 2rem">
+    <div class="container" style="max-width:720px">
+      <div id="submit-form-wrap"><!-- Populated by JS --></div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════════════════════════════
+     ADMIN PANEL PAGE
+══════════════════════════════════ -->
+<div class="page" id="page-admin">
+  <div class="admin-header">
+    <div class="admin-header-inner">
+      <div>
+        <div class="eyebrow" style="color:var(--gold)">Control Centre</div>
+        <h1 class="admin-title">Admin Dashboard</h1>
+      </div>
+      <button class="admin-btn admin-btn--ghost" onclick="logout()">Sign Out</button>
+    </div>
+  </div>
+
+  <!-- Stats Row -->
+  <div class="admin-stats-bar">
+    <div class="admin-stat">
+      <div class="admin-stat-num" id="stat-total-stories">0</div>
+      <div class="admin-stat-label">Total Stories</div>
+    </div>
+    <div class="admin-stat">
+      <div class="admin-stat-num pending-col" id="stat-pending">0</div>
+      <div class="admin-stat-label">Pending Review</div>
+    </div>
+    <div class="admin-stat">
+      <div class="admin-stat-num approved-col" id="stat-published">0</div>
+      <div class="admin-stat-label">Published</div>
+    </div>
+    <div class="admin-stat">
+      <div class="admin-stat-num" id="stat-users">0</div>
+      <div class="admin-stat-label">Invited Users</div>
+    </div>
+    <div class="admin-stat">
+      <div class="admin-stat-num" id="stat-subscribers">0</div>
+      <div class="admin-stat-label">Subscribers</div>
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="admin-tabs">
+    <button id="tab-dashboard" class="admin-tab active" onclick="setAdminTab('dashboard')">Overview</button>
+    <button id="tab-pending" class="admin-tab" onclick="setAdminTab('pending')">Pending</button>
+    <button id="tab-published" class="admin-tab" onclick="setAdminTab('published')">Published</button>
+    <button id="tab-declined" class="admin-tab" onclick="setAdminTab('declined')">Declined</button>
+    <button id="tab-blogs" class="admin-tab" onclick="setAdminTab('blogs')">Blogs</button>
+    <button id="tab-users" class="admin-tab" onclick="setAdminTab('users')">Users</button>
+    <button id="tab-theme" class="admin-tab" onclick="setAdminTab('theme')">🎨 Theme Studio</button>
+  </div>
+
+  <div class="admin-content">
+    <div id="admin-tab-content"><!-- Populated by JS --></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     MODALS
+══════════════════════════════════ -->
+
+<!-- Blog Read Modal -->
+<div class="modal-backdrop" id="blog-modal">
+  <div class="modal-box modal-story">
+    <button class="modal-close" onclick="closeBlogModal()">✕</button>
+    <img id="bm-img" src="" alt="" style="width:100%;height:280px;object-fit:cover;display:none">
+    <div class="modal-body">
+      <span class="blog-tag" id="bm-tag"></span>
+      <h2 id="bm-title" style="font-family:var(--serif);font-size:2rem;font-weight:400;margin:0.5rem 0 0.3rem"></h2>
+      <div style="font-size:0.75rem;color:var(--warm);margin-bottom:1.8rem">By <strong id="bm-author"></strong> · <span id="bm-date"></span></div>
+      <div id="bm-content" style="font-size:0.88rem;line-height:2.1;color:var(--warm);font-weight:300"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Blog Edit Modal -->
+<div class="modal-backdrop" id="blog-edit-modal">
+  <div class="modal-box modal-edit" style="max-width:760px">
+    <button class="modal-close" onclick="closeBlogEditModal()">✕</button>
+    <div class="modal-body">
+      <h3 style="font-family:var(--serif);font-weight:400;margin-bottom:1.5rem">Blog Post</h3>
+      <form class="form-full">
+        <input type="hidden" id="be-id">
+        <input type="text" id="be-title" placeholder="Post title *" required>
+        <input type="text" id="be-tag" placeholder="Category tag (e.g. Leadership, F&B, Technology)" required>
+        <input type="text" id="be-img" placeholder="Cover image URL (optional)">
+        <input type="text" id="be-excerpt" placeholder="Short excerpt shown on blog listing (optional)">
+        <textarea id="be-content" placeholder="Full blog post content *" style="min-height:300px" required></textarea>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:0.5rem">
+          <button type="button" class="admin-btn admin-btn--approve" onclick="saveBlog(event,true)" style="font-family:var(--sans)">Save & Publish</button>
+          <button type="button" class="admin-btn admin-btn--edit" onclick="saveBlog(event,false)" style="font-family:var(--sans)">Save as Draft</button>
+          <button type="button" class="admin-btn admin-btn--ghost" onclick="closeBlogEditModal()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Story Read Modal -->
+<div class="modal-backdrop" id="story-modal">
+  <div class="modal-box modal-story">
+    <button class="modal-close" onclick="closeStoryModal()">✕</button>
+    <img id="modal-photo" src="" alt="" style="width:100%;height:280px;object-fit:cover;display:none">
+    <div class="modal-body">
+      <span class="story-role" id="modal-role"></span>
+      <h2 id="modal-title" style="font-family:var(--serif);font-size:2rem;font-weight:400;margin:0.5rem 0 0.3rem"></h2>
+      <div style="font-size:0.75rem;color:var(--warm);margin-bottom:1.8rem">By <strong id="modal-author"></strong></div>
+      <div id="modal-content" style="font-size:0.88rem;line-height:2.1;color:var(--warm);font-weight:300"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Decline Modal -->
+<div class="modal-backdrop" id="decline-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeDeclineModal()">✕</button>
+    <div class="modal-body">
+      <h3 style="font-family:var(--serif);font-weight:400;margin-bottom:0.3rem">Decline Story</h3>
+      <p id="decline-story-title" style="color:var(--gold);font-size:0.85rem;margin-bottom:1.5rem"></p>
+      <div class="form-full">
+        <textarea id="decline-note-input" placeholder="Optional note to the author explaining why..." style="min-height:100px"></textarea>
+        <div style="display:flex;gap:1rem;margin-top:0.5rem">
+          <button id="decline-confirm-btn" class="admin-btn admin-btn--decline" style="font-family:var(--sans)">Confirm Decline</button>
+          <button class="admin-btn admin-btn--ghost" onclick="closeDeclineModal()">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Story Modal -->
+<div class="modal-backdrop" id="edit-modal">
+  <div class="modal-box modal-edit">
+    <button class="modal-close" onclick="closeEditModal()">✕</button>
+    <div class="modal-body">
+      <h3 style="font-family:var(--serif);font-weight:400;margin-bottom:1.5rem">Edit Story</h3>
+      <form onsubmit="saveEditedStory(event)" class="form-full">
+        <input type="hidden" id="edit-story-id">
+        <input type="text" id="edit-title" placeholder="Title *" required>
+        <input type="text" id="edit-role" placeholder="Role / title *" required>
+        <textarea id="edit-content" placeholder="Story content *" style="min-height:260px" required></textarea>
+        <div style="display:flex;gap:1rem;margin-top:0.5rem">
+          <button type="submit" class="admin-btn admin-btn--approve" style="font-family:var(--sans)">Save Changes</button>
+          <button type="button" class="admin-btn admin-btn--ghost" onclick="closeEditModal()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Service Connect Modal -->
+<div class="modal-backdrop" id="service-contact-modal">
+  <div class="modal-box" style="max-width:560px">
+    <button class="modal-close" onclick="closeServiceContactModal()">✕</button>
+    <div class="modal-body">
+      <div class="eyebrow" style="color:var(--gold);margin-bottom:0.5rem">Let's Connect</div>
+      <h3 style="font-family:var(--serif);font-size:1.8rem;font-weight:400;color:var(--ink);margin-bottom:0.3rem">
+        Tell us what you need
+      </h3>
+      <p style="font-size:0.82rem;color:var(--warm);margin-bottom:2rem;line-height:1.8">
+        Fill in the form below and Hari will personally get back to you within 24 hours.
+      </p>
+      <div class="form-full">
+        <div class="form-row">
+          <input type="text"  id="sc-fname"   placeholder="First name *"      required>
+          <input type="text"  id="sc-lname"   placeholder="Last name *"       required>
+        </div>
+        <input type="email"   id="sc-email"   placeholder="Email address *"   required>
+        <input type="tel"     id="sc-phone"   placeholder="Phone / WhatsApp">
+        <input type="text"    id="sc-role"    placeholder="Your role in hospitality">
+        <select               id="sc-reason">
+          <option value="" disabled>Reason for contact</option>
+          <option>Share my story</option>
+          <option>Submit my CV</option>
+          <option>Find an advisor</option>
+          <option>Pre-opening support</option>
+          <option>Operational consulting</option>
+          <option>General inquiry</option>
+        </select>
+        <textarea             id="sc-message" placeholder="Tell us a little about what you need…" style="min-height:110px"></textarea>
+        <div id="sc-error"   class="form-error"  style="display:none"></div>
+        <div id="sc-success" class="form-success" style="display:none">✓ Message sent! Hari will be in touch within 24 hours.</div>
+        <button class="btn btn-solid" onclick="submitServiceContact(event)" style="font-family:var(--sans);align-self:flex-start">
+          Send Message
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand">
+               <div class="footer-name">Immortal Hoteliers<small>Stories That Live Forever</small></div>
+      </div>
+      <p class="footer-tagline">A global storytelling and advisory platform dedicated to the people behind hospitality. Est. 2025.</p>
+      <div class="footer-sub" style="margin-top:1.5rem">
+        <input type="email" id="newsletter-email" placeholder="Subscribe to our stories">
+        <button onclick="subscribeNewsletter(event)">Subscribe</button>
+      </div>
+      <div id="newsletter-msg" style="font-size:0.7rem;margin-top:0.6rem;display:none;color:var(--gold)"></div>
+    </div>
+    <div>
+      <h4>Navigate</h4>
+      <ul>
+        <li><a onclick="showPage('home')">Home</a></li>
+        <li><a onclick="showPage('blogs')">Blogs</a></li>
+        <li><a onclick="showPage('stories')">Stories</a></li>
+        <li><a onclick="showPage('services')">Services</a></li>
+        <li><a onclick="showPage('contact')">Contact Us</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Platform</h4>
+      <ul>
+        <li><a onclick="showPage('contact')">Share Your Story</a></li>
+        <li><a onclick="showPage('contact')">Find an Advisor</a></li>
+        <li><a onclick="showPage('contact')">Submit Your CV</a></li>
+        <li><a onclick="showPage('services')">Our Services</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="mailto:info@immortalhoteliers.com">Email Us</a></li>
+        <li><a href="tel:+97451142741">+974 51142741</a></li>
+        <li><a href="https://immortalhoteliers.com" target="_blank">Visit Website</a></li>
+        <li><a href="#" id="footer-linkedin" data-social="linkedin" onclick="openSocial('linkedin')">LinkedIn</a></li>
+        <li><a href="#" id="footer-instagram" data-social="instagram" onclick="openSocial('instagram')">Instagram</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© <span id="footer-year"></span> Immortal Hoteliers. All rights reserved.</p>
+    <p class="est">Est. 2025 · Doha, Qatar</p>
+  </div>
+</footer>
+
+  <!-- WhatsApp FAB -->
+  <a class="whatsapp-fab" href="https://wa.me/97451142741?text=Hello%2C%20I%20found%20Immortal%20Hoteliers%20and%20would%20love%20to%20connect." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <!-- Cookie Consent -->
+  <div class="cookie-banner" id="cookie-banner">
+    <div class="cookie-text">
+      <strong>We use cookies</strong> to remember your preferences and improve your experience on Immortal Hoteliers.
+    </div>
+    <div class="cookie-actions">
+      <button class="cookie-btn cookie-accept" onclick="acceptCookies()">Accept</button>
+      <button class="cookie-btn cookie-decline" onclick="declineCookies()">Decline</button>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
