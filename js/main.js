@@ -27,7 +27,7 @@ const DB = {
   clearSession:   () => localStorage.removeItem('ih_session'),
   getTheme:       () => DB._get('ih_theme',       null),
   setTheme:       (v) => DB._set('ih_theme',       v),
-  getSocials:     () => DB._get('ih_socials',     { linkedin: '', instagram: '', whatsapp: '97451142741' }),
+  getSocials:     () => DB._get('ih_socials',     { linkedin: '', instagram: '', whatsapp: '918103705495' }),
   setSocials:     (v) => DB._set('ih_socials',     v),
   getSubscribers: () => DB._get('ih_subscribers', []),
   setSubscribers: (v) => DB._set('ih_subscribers', v),
@@ -173,7 +173,7 @@ function renderSubmitPage() {
         <textarea           id="s-content" placeholder="Tell your story — be honest, be real *" style="min-height:280px" required></textarea>
         <p style="font-size:0.75rem;color:var(--warm);margin-top:-0.5rem;line-height:1.7">Write as much as you like. Hari reviews everything before it goes live.</p>
         <div id="submit-error"   class="form-error"  style="display:none"></div>
-        <div id="submit-success" class="form-success" style="display:none">✓ Submitted! Hari will be in touch.</div>
+        <div id="submit-success" class="form-success" style="display:none">✓ Submitted! We will get back to you soon.</div>
         <button type="submit" class="btn btn-solid" style="font-family:var(--sans);align-self:flex-start">Submit for Review</button>
       </div>
     </form>
@@ -395,7 +395,7 @@ async function submitContactForm(e, formId) {
   }
 
   if (FORMSPREE_ID === 'YOUR_FORM_ID') {
-    flashMsg(sucId, '✓ Message sent! Hari will be in touch soon.', 5000); return;
+    flashMsg(sucId, '✓ Message sent! We will get back to you soon.', 5000); return;
   }
 
   try {
@@ -404,7 +404,7 @@ async function submitContactForm(e, formId) {
       headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
       body: JSON.stringify(payload),
     });
-    if (res.ok) { flashMsg(sucId, '✓ Message sent! Hari will be in touch soon.', 5000); }
+    if (res.ok) { flashMsg(sucId, '✓ Message sent! We will get back to you soon.', 5000); }
     else { const err = $$(errId); if (err) { err.textContent = 'Send failed. Please email us directly.'; err.style.display = 'block'; } }
   } catch {
     const err = $$(errId); if (err) { err.textContent = 'Network error. Please email us directly.'; err.style.display = 'block'; }
@@ -720,17 +720,17 @@ function closeBlogEditModal() { $$('blog-edit-modal')?.classList.remove('open');
 /* ── THEME STUDIO ───────────────────────────────────────────── */
 const SEASONAL_THEMES = [
   { id:'ramadan',  name:'Ramadan',  dates:[{start:'02-15',end:'03-25'}],
-    vars:{'--gold':'#D4A853','--gold-light':'#E8C06B','--ink':'#0C0A06','--ink-soft':'#1C160C','--cream':'#F9F5EC'},
-    preview:'linear-gradient(135deg,#0C0A06 0%,#1C160C 50%,#D4A853 100%)' },
+    vars:{'--gold':'#1B4D2E','--gold-light':'#246038','--ink':'#0C0A06','--ink-soft':'#1C160C','--cream':'#F9F5EC'},
+    preview:'linear-gradient(135deg,#0C0A06 0%,#1C160C 50%,#1B4D2E 100%)' },
   { id:'eid',      name:'Eid',      dates:[{start:'03-25',end:'04-05'},{start:'05-28',end:'06-07'}],
-    vars:{'--gold':'#C8963A','--gold-light':'#E2B55A','--ink':'#071209','--ink-soft':'#0E1E0F','--cream':'#F2F7F2'},
-    preview:'linear-gradient(135deg,#071209 0%,#0E1E0F 50%,#C8963A 100%)' },
+    vars:{'--gold':'#1B4D2E','--gold-light':'#246038','--ink':'#071209','--ink-soft':'#0E1E0F','--cream':'#F2F7F2'},
+    preview:'linear-gradient(135deg,#071209 0%,#0E1E0F 50%,#1B4D2E 100%)' },
   { id:'newyear',  name:'New Year', dates:[{start:'12-29',end:'01-04'}],
-    vars:{'--gold':'#E8D5A3','--gold-light':'#F2E4C0','--ink':'#050507','--ink-soft':'#0D0D16','--cream':'#F5F5FA'},
-    preview:'linear-gradient(135deg,#050507 0%,#0D0D16 50%,#E8D5A3 100%)' },
+    vars:{'--gold':'#2D6B44','--gold-light':'#3A7D52','--ink':'#050507','--ink-soft':'#0D0D16','--cream':'#F5F5FA'},
+    preview:'linear-gradient(135deg,#050507 0%,#0D0D16 50%,#2D6B44 100%)' },
   { id:'summer',   name:'Summer',   dates:[{start:'06-15',end:'08-31'}],
-    vars:{'--gold':'#D4803A','--gold-light':'#E89B5A','--ink':'#080504','--ink-soft':'#180E08','--cream':'#FBF7F0'},
-    preview:'linear-gradient(135deg,#080504 0%,#180E08 50%,#D4803A 100%)' },
+    vars:{'--gold':'#1B4D2E','--gold-light':'#246038','--ink':'#080504','--ink-soft':'#180E08','--cream':'#FBF7F0'},
+    preview:'linear-gradient(135deg,#080504 0%,#180E08 50%,#1B4D2E 100%)' },
 ];
 
 const FONT_PAIRS = [
@@ -842,7 +842,7 @@ function renderThemeTab(el) {
         <div class="form-full" style="max-width:480px">
           <input type="url"  id="set-linkedin"  placeholder="LinkedIn URL (https://linkedin.com/company/...)" value="${esc(socials.linkedin||'')}">
           <input type="text" id="set-instagram" placeholder="Instagram handle (@immortalhoteliers)"            value="${esc(socials.instagram||'')}">
-          <input type="text" id="set-whatsapp"  placeholder="WhatsApp number (97451142741)"                   value="${esc(socials.whatsapp||'')}">
+          <input type="text" id="set-whatsapp"  placeholder="WhatsApp number (e.g. 97412345678)"                   value="${esc(socials.whatsapp||'')}">
           <div id="socials-saved" class="form-success" style="display:none">✓ Saved.</div>
           <button class="admin-btn admin-btn--approve" onclick="saveSocials()" style="font-family:var(--sans);align-self:flex-start">Save Links</button>
         </div>
@@ -870,7 +870,7 @@ function applyFontPair(fontId) {
 
 function saveCustomTheme() {
   const saved=DB.getTheme()||{};
-  saved.vars={'--gold':$$('pick-gold')?.value||'#C9973A','--cream':$$('pick-cream')?.value||'#F7F4EE',
+  saved.vars={'--gold':$$('pick-gold')?.value||'#1B4D2E','--cream':$$('pick-cream')?.value||'#F7F4EE',
     '--ink':$$('pick-ink')?.value||'#080604','--ink-soft':$$('pick-ink')?.value||'#1A1612'};
   saved.pinned=false; DB.setTheme(saved); applyTheme(saved);
   flashMsg('theme-saved-msg','✓ Theme saved and applied.',3000);
@@ -1124,7 +1124,7 @@ async function submitServiceContact(e) {
   };
 
   if (FORMSPREE_ID === 'YOUR_FORM_ID') {
-    flashMsg('sc-success', '✓ Message sent! Hari will be in touch within 24 hours.', 6000);
+    flashMsg('sc-success', '✓ Message sent! We will get back to you within 24 hours.', 6000);
     // Reset form after success
     setTimeout(() => {
       ['sc-fname','sc-lname','sc-email','sc-phone','sc-role','sc-message'].forEach(id => setVal(id, ''));
@@ -1139,7 +1139,7 @@ async function submitServiceContact(e) {
       body:    JSON.stringify(payload),
     });
     if (res.ok) {
-      flashMsg('sc-success', '✓ Message sent! Hari will be in touch within 24 hours.', 6000);
+      flashMsg('sc-success', '✓ Message sent! We will get back to you within 24 hours.', 6000);
       setTimeout(() => closeServiceContactModal(), 4000);
     } else {
       if (errEl) { errEl.textContent = 'Send failed. Please email us directly at info@immortalhoteliers.com'; errEl.style.display = 'block'; }
@@ -1398,4 +1398,205 @@ window.renderPublicStories = function() {
   // Remove skeleton cards first
   document.querySelectorAll('#public-stories-list .skel-card').forEach(c => c.remove());
   _origRenderStoriesForSkel();
+};
+
+/* ═══════════════════════════════════════════════════════════
+   EMAILJS — sends ALL form submissions to info@immortalhoteliers.com
+   Setup: sign up at emailjs.com (free 200 emails/month)
+   1. Create account → Email Services → connect Gmail/Outlook
+   2. Email Templates → create template with variables below
+   3. Account → Public Key → paste in index.html
+   4. Replace SERVICE_ID and TEMPLATE_ID below
+═══════════════════════════════════════════════════════════ */
+const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID';   // e.g. 'service_abc123'
+const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';  // e.g. 'template_xyz789'
+const CONTACT_EMAIL       = 'info@immortalhoteliers.com'; // All forms send here
+
+async function sendViaEmailJS(params) {
+  // If EmailJS is fully configured, use it
+  if (window.emailjs &&
+      EMAILJS_SERVICE_ID  !== 'YOUR_SERVICE_ID' &&
+      EMAILJS_TEMPLATE_ID !== 'YOUR_TEMPLATE_ID') {
+    return emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+      to_email: CONTACT_EMAIL,
+      ...params,
+    });
+  }
+
+  // Fallback: open mailto so message is never lost
+  const body = Object.entries(params)
+    .filter(([k]) => !['subject','source'].includes(k))
+    .map(([k,v]) => `${k.replace(/_/g,' ')}: ${v}`)
+    .join('%0A');
+  const subject = encodeURIComponent(params.subject || 'Message from Immortal Hoteliers');
+  window.open(`mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`, '_blank');
+
+  // Return success so UI shows confirmation
+  return { status: 200 };
+}
+
+/* Override submitContactForm to use EmailJS */
+window.submitContactForm = async function(e, formId) {
+  e.preventDefault();
+  const home  = formId === 'home';
+  const errId = home ? 'hc-error' : 'cp-error';
+  const sucId = home ? 'hc-success' : 'cp-success';
+  hideEl(errId);
+
+  const payload = home ? {
+    from_name:    getVal('hc-name'),
+    from_email:   getVal('hc-email'),
+    role:         getVal('hc-role'),
+    message:      getVal('hc-message'),
+    subject:      'New message — Immortal Hoteliers',
+  } : {
+    from_name:    `${getVal('cp-fname')} ${getVal('cp-lname')}`.trim(),
+    from_email:   getVal('cp-email'),
+    phone:        getVal('cp-phone'),
+    role:         getVal('cp-role'),
+    reason:       getVal('cp-reason'),
+    message:      getVal('cp-message'),
+    subject:      `Contact: ${getVal('cp-reason') || 'General inquiry'}`,
+  };
+
+  if (!payload.from_email || !payload.message) {
+    const err = $$(errId);
+    if (err) { err.textContent = 'Please fill in all required fields.'; err.style.display = 'block'; }
+    return;
+  }
+
+  try {
+    await sendViaEmailJS(payload);
+    flashMsg(sucId, '✓ Message sent! We will get back to you soon.', 5000);
+  } catch(err) {
+    const errEl = $$(errId);
+    if (errEl) { errEl.textContent = `Send failed. Please email ${CONTACT_EMAIL} directly.`; errEl.style.display = 'block'; }
+  }
+};
+
+/* Override submitServiceContact to use EmailJS + CV file */
+window.submitServiceContact = async function(e) {
+  e.preventDefault();
+  const errEl = $$('sc-error');
+  hideEl('sc-error');
+
+  const fname   = getVal('sc-fname').trim();
+  const email   = getVal('sc-email').trim();
+  const message = getVal('sc-message').trim();
+  const reason  = getVal('sc-reason');
+
+  if (!fname || !email || !message) {
+    if (errEl) { errEl.textContent = 'Please fill in your name, email, and message.'; errEl.style.display = 'block'; }
+    return;
+  }
+
+  const payload = {
+    from_name:  `${fname} ${getVal('sc-lname').trim()}`,
+    from_email: email,
+    phone:      getVal('sc-phone').trim(),
+    role:       getVal('sc-role').trim(),
+    reason,
+    message,
+    subject:    `Service enquiry: ${reason || 'General'}`,
+    source:     'Services Page',
+  };
+
+  // Handle CV file — convert to base64 for EmailJS attachment
+  const fileInput = $$('sc-cv-file');
+  if (fileInput?.files?.length) {
+    const file = fileInput.files[0];
+    if (file.size > 5 * 1024 * 1024) {
+      if (errEl) { errEl.textContent = 'CV file must be under 5MB.'; errEl.style.display = 'block'; }
+      return;
+    }
+    // Note to EmailJS: attachments require paid plan — we include file name in message
+    payload.cv_filename = file.name;
+    payload.message += `\n\n[CV attached: ${file.name}]`;
+  }
+
+  try {
+    await sendViaEmailJS(payload);
+    flashMsg('sc-success', '✓ Message sent! We will get back to you within 24 hours.', 6000);
+    setTimeout(() => {
+      ['sc-fname','sc-lname','sc-email','sc-phone','sc-role','sc-message'].forEach(id => setVal(id,''));
+      if (fileInput) fileInput.value = '';
+    }, 500);
+  } catch(err) {
+    if (errEl) { errEl.textContent = `Send failed. Please email ${CONTACT_EMAIL} directly.`; errEl.style.display = 'block'; }
+  }
+};
+
+/* Show/hide CV upload when "Submit my CV" is selected */
+document.addEventListener('DOMContentLoaded', () => {
+  const scReason = $$('sc-reason');
+  const cvWrap   = $$('sc-cv-wrap');
+  if (scReason && cvWrap) {
+    scReason.addEventListener('change', () => {
+      cvWrap.style.display = scReason.value === 'Submit my CV' ? 'block' : 'none';
+    });
+  }
+});
+
+/* ═══════════════════════════════════════════════════════════
+   LIVE REFLECTION — admin changes instantly update public pages
+   Story/blog approvals now immediately re-render public grids
+═══════════════════════════════════════════════════════════ */
+/* Patch approveStory to refresh public stories */
+const _baseApproveStory = approveStory;
+window.approveStory = function(id) {
+  _baseApproveStory(id);
+  renderPublicStories();  // immediate public refresh
+};
+
+/* Patch publishBlog to refresh public blogs */
+const _basePublishBlog = publishBlog;
+window.publishBlog = function(id) {
+  _basePublishBlog(id);
+  renderPublicBlogs();    // immediate public refresh
+};
+
+/* Patch unpublishBlog */
+const _baseUnpublishBlog = unpublishBlog;
+window.unpublishBlog = function(id) {
+  _baseUnpublishBlog(id);
+  renderPublicBlogs();
+};
+
+/* Patch saveEditedStory — already calls renderPublicStories, but ensure blogs too */
+const _baseSaveBlog = saveBlog;
+window.saveBlog = function(e, publish) {
+  _baseSaveBlog(e, publish);
+  // renderPublicBlogs already called inside saveBlog — ensure filtered also updates
+  if (_blogQuery || _blogFilter !== 'all') renderPublicBlogsFiltered();
+};
+
+/* Notify admin visually when a new story comes in */
+function checkPendingNotification() {
+  const pending = DB.getStories().filter(s => s.status === 'pending').length;
+  const tabEl   = $$('tab-pending');
+  if (tabEl && pending > 0) {
+    tabEl.innerHTML = `Pending <span class="pending-badge">${pending}</span>`;
+  }
+}
+
+/* Add pending badge CSS inline */
+(function(){
+  const s = document.createElement('style');
+  s.textContent = `
+    .pending-badge{
+      display:inline-flex;align-items:center;justify-content:center;
+      background:var(--gold);color:var(--ink);
+      font-size:0.5rem;font-weight:800;
+      width:16px;height:16px;border-radius:50%;
+      margin-left:0.4rem;vertical-align:middle;
+    }
+  `;
+  document.head.appendChild(s);
+})();
+
+/* Call on admin load */
+const _baseRenderAdminDashboard = renderAdminDashboard;
+window.renderAdminDashboard = function() {
+  _baseRenderAdminDashboard();
+  checkPendingNotification();
 };
