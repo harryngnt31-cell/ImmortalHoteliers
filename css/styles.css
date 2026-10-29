@@ -1201,6 +1201,14 @@ mark.search-highlight {
   display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
   margin-top: 2.5rem;
 }
+.founder-sig-row {
+  display: flex; justify-content: center; align-items: flex-start;
+  flex-wrap: wrap; gap: 1.5rem 4rem;
+}
+@media (max-width: 600px) {
+  .founder-sig-row { flex-direction: column; align-items: center; gap: 0; }
+  .founder-sig-row .founder-note-sig + .founder-note-sig { margin-top: 2rem; }
+}
 .founder-sig-line {
   width: 48px; height: 1px; background: var(--gold); margin-bottom: 0.6rem;
 }
